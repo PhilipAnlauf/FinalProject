@@ -11,5 +11,6 @@ public class Main {
     gameScreen.add(startMenu);
 
     gameScreen.setVisible(true);
+    System.out.println("testing git push/pull");
     }
 }
