@@ -1,0 +1,7 @@
+JLabel rock1 = new JLabel(rockImage);
+rock1.setBounds((int)(Math.random()*1440),(int)(Math.random()*900),60,60);
+layeredPane.add(rock1, Integer.valueOf(0));
+
+JLabel tree1 = new JLabel(treeImage);
+tree1.setBounds((int)(Math.random()*1440),(int)(Math.random()*900),120,120);
+layeredPane.add(tree1, Integer.valueOf(0));
