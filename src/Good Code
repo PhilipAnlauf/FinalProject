@@ -1,3 +1,16 @@
+ //================= Rock Image Build =======================
+        ImageIcon rockImage = new ImageIcon("rock.png");
+        rockImage.setImage(rockImage.getImage().getScaledInstance(60,60,Image.SCALE_DEFAULT));
+        .setBounds((int)(Math.random()*1440),(int)(Math.random()*900),60,60);
+        layeredPane.add(#######, Integer.valueOf(0));
+ //==========================================================
+
+ //================= Tree Image Build =======================
+        ImageIcon treeImage = new ImageIcon("tree.png");
+        treeImage.setImage(treeImage.getImage().getScaledInstance(120,120,Image.SCALE_DEFAULT));
+        .setBounds((int)(Math.random()*1440),(int)(Math.random()*900),120,120);
+        layeredPane.add(#######, Integer.valueOf(0));
+ //==========================================================
 JLabel rock1 = new JLabel(rockImage);
 rock1.setBounds((int)(Math.random()*1440),(int)(Math.random()*900),60,60);
 layeredPane.add(rock1, Integer.valueOf(0));
