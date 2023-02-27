@@ -18,6 +18,8 @@ public class Main {
         JLayeredPane layeredPane = new JLayeredPane();
         //==========================================================
 
+        
+
         JFrame frame = new JFrame("JLayeredPane");
         frame.add(layeredPane);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
