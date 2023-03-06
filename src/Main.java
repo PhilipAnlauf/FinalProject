@@ -11,14 +11,16 @@ public class Main {
         ImageIcon rockImage = new ImageIcon("rock.png");
         rockImage.setImage(rockImage.getImage().getScaledInstance(60,60,Image.SCALE_DEFAULT));
         JLayeredPane layeredPane = new JLayeredPane();
-        ArrayList<JLabel> rocks = new ArrayList<>();
-
+        layeredPane.setSize(1440, 900);
         //=======================
         //Adding Sprites
+        ArrayList<JLabel> rocks = new ArrayList<>();
+        ArrayList<TSprites> TSprites = new ArrayList<>();
 
-        JLabel rock1 = new JLabel(rockImage);
-        rock1.setBounds(100,100,60,60);
-        layeredPane.add(rock1, Integer.valueOf(0));
+        for(int i = 0; i<30; i++){
+            rocks.add(new JLabel("rock.png"));
+            
+        }
 
         //=======================
         JFrame frame = new JFrame("JLayeredPane");
