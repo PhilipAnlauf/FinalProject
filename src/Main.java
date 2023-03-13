@@ -21,6 +21,9 @@ public class Main {
         ImageIcon playerImage = new ImageIcon("treeAnimation1.png");
         playerImage.setImage(playerImage.getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
 
+        ImageIcon backgroundImage = new ImageIcon("background.png");
+        playerImage.setImage(playerImage.getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
+
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setSize(1440, 900);
 
@@ -75,6 +78,11 @@ public class Main {
         JLabel player = new JLabel(playerImage);
         layeredPane.add(player, Integer.valueOf(3));
         player.setBounds(500, 500,50,50);
+
+        JLabel background = new JLabel(backgroundImage);
+        layeredPane.add(background, Integer.valueOf(0));
+        background.setBounds(0, 0,1440,900);
+
 
         //=======================
         JFrame frame = new JFrame("JLayeredPane");
