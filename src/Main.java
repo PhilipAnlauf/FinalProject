@@ -9,7 +9,7 @@ public class Main {
     public static void main(String[] args) {
         //Initializing images and misc.
         ImageIcon treeImage = new ImageIcon("tree.png");
-        treeImage.setImage(treeImage.getImage().getScaledInstance(120,120,Image.SCALE_DEFAULT));
+        treeImage.setImage(treeImage.getImage().getScaledInstance(160,160,Image.SCALE_DEFAULT));
         ImageIcon rockImage = new ImageIcon("rock.png");
         rockImage.setImage(rockImage.getImage().getScaledInstance(60,60,Image.SCALE_DEFAULT));
 
@@ -22,7 +22,7 @@ public class Main {
         playerImage.setImage(playerImage.getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
 
         ImageIcon backgroundImage = new ImageIcon("background.png");
-        playerImage.setImage(playerImage.getImage().getScaledInstance(50,50,Image.SCALE_DEFAULT));
+        backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(1440,900,Image.SCALE_DEFAULT));
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setSize(1440, 900);
@@ -67,22 +67,23 @@ public class Main {
             layeredPane.add(hold, Integer.valueOf(1));
         }
 
-        for(int i = 0; i<treeCount; i++){
-            trees.add(new JLabel(treeImage));
-        }
-        for(JLabel hold: trees){
-            hold.setBounds((int)(Math.random()*1440),(int)(Math.random()*900),120,120);
-            layeredPane.add(hold, Integer.valueOf(3));
-        }
-
         JLabel player = new JLabel(playerImage);
         layeredPane.add(player, Integer.valueOf(3));
         player.setBounds(500, 500,50,50);
 
+        for(int i = 0; i<treeCount; i++){
+            trees.add(new JLabel(treeImage));
+        }
+        int herba = 4;
+        for(JLabel hold: trees){
+            hold.setBounds((int)(Math.random()*1280),(int)(Math.random()*740),160,160);
+            layeredPane.add(hold, Integer.valueOf(herba));
+            herba++;
+        }
+
         JLabel background = new JLabel(backgroundImage);
         layeredPane.add(background, Integer.valueOf(0));
         background.setBounds(0, 0,1440,900);
-
 
         //=======================
         JFrame frame = new JFrame("JLayeredPane");
