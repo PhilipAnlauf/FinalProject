@@ -30,7 +30,7 @@ public class Main {
         //============================================
         //=========== General Game Values ============
         int rockCount = 30;
-        int treeCount = 16;
+        int treeCount = 23;
 
         int playerSpeed = 35;
 
@@ -64,22 +64,27 @@ public class Main {
 
         for(JLabel hold: monsters){
             hold.setBounds((int)(Math.random()*1440),-200,60,60);
-            layeredPane.add(hold, Integer.valueOf(1));
+            layeredPane.add(hold, Integer.valueOf(2));
         }
 
         JLabel player = new JLabel(playerImage);
         layeredPane.add(player, Integer.valueOf(3));
         player.setBounds(500, 500,50,50);
 
-        for(int i = 0; i<treeCount; i++){
+        int testing = 4;
+
+        trees.add(new JLabel(treeImage));
+        for(int i = 1; i<treeCount; i++){
             trees.add(new JLabel(treeImage));
+            for(int i2 = 0; i2<trees.size(); i2++){
+                if((trees.get(i).getX() <= trees.get(i2).getX()+200) && (trees.get(i).getY() <= trees.get(i2).getY()+200)){
+                    trees.get(i).setBounds((int)(Math.random()*1350),(int)(Math.random()*850),160,160);
+                }
+            }
+            layeredPane.add(trees.get(i), Integer.valueOf(testing));
+            testing++;
         }
-        int herba = 4;
-        for(JLabel hold: trees){
-            hold.setBounds((int)(Math.random()*1280),(int)(Math.random()*740),160,160);
-            layeredPane.add(hold, Integer.valueOf(herba));
-            herba++;
-        }
+
 
         JLabel background = new JLabel(backgroundImage);
         layeredPane.add(background, Integer.valueOf(0));
@@ -99,23 +104,10 @@ public class Main {
             public void keyTyped(KeyEvent e) {
 
             }
+
             @Override
             public void keyPressed(KeyEvent e) {
-              if(e.getKeyCode() == 87){
-                  player.setBounds(player.getX(), player.getY()-playerSpeed,50,50);
-              }
 
-              if(e.getKeyCode() == 65){
-                    player.setBounds(player.getX()-playerSpeed, player.getY(),50,50);
-              }
-
-              if(e.getKeyCode() == 83){
-                    player.setBounds(player.getX(), player.getY()+playerSpeed,50,50);
-              }
-
-              if(e.getKeyCode() == 68){
-                    player.setBounds(player.getX()+playerSpeed, player.getY(),50,50);
-              }
             }
 
             @Override
@@ -123,18 +115,16 @@ public class Main {
 
             }
         });
-
-
         //======================
         //===== Game Start =====
         while(true){
 
             Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-            if(player.getX() <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
-            if(player.getX() >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
-            if(player.getY() <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
-            if(player.getY() >= cursor.getY()){player.setBounds(player.getX(), player.getY()-playerSpeed,120,120); }
+            if(player.getX()+50 <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
+            if(player.getX()+50 >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
+            if(player.getY()+75 <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
+            if(player.getY()+75 >= cursor.getY()){player.setBounds(player.getX(), player.getY()-playerSpeed,120,120); }
 
 
             for(JLabel hold: monsters){
@@ -150,6 +140,13 @@ public class Main {
                 if(hold.getY() <= player.getY()){hold.setBounds(hold.getX(), hold.getY()+treeSpeed,120,120);}
                 if(hold.getY() >= player.getY()){hold.setBounds(hold.getX(), hold.getY()-treeSpeed,120,120); }
             }
+
+            for(JLabel stuff: trees){
+                if(frame.getKeyListeners())
+            }
+
+
+
 
             try
             {
