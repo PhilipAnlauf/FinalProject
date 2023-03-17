@@ -4,6 +4,9 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.util.ArrayList;
 import java.util.Date;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
+import java.awt.event.KeyEvent;
 public class Main {
 
     public static void main(String[] args) {
@@ -34,7 +37,7 @@ public class Main {
 
         int playerSpeed = 35;
 
-        int maxCreatures = 25;
+        int maxCreatures = 10000;
         int creatureHealth = 30;
         int treeSpeed = 20;
         int skinChoice = 1;
@@ -99,22 +102,7 @@ public class Main {
         frame.setVisible(true);
         //================================
         //===== Other Initialization =====
-        frame.addKeyListener(new KeyListener() {
-            @Override
-            public void keyTyped(KeyEvent e) {
 
-            }
-
-            @Override
-            public void keyPressed(KeyEvent e) {
-
-            }
-
-            @Override
-            public void keyReleased(KeyEvent e) {
-
-            }
-        });
         //======================
         //===== Game Start =====
         while(true){
@@ -141,10 +129,13 @@ public class Main {
                 if(hold.getY() >= player.getY()){hold.setBounds(hold.getX(), hold.getY()-treeSpeed,120,120); }
             }
 
-            for(JLabel stuff: trees){
-                if(frame.getKeyListeners())
+            for(int i  = 0; i<trees.size(); i++){
+                if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
+                    if(player.getY() >= trees.get(i).getY()-50 && player.getY() <= trees.get(i).getY()+50){
+                        trees.get(i).setBounds(5000,5000,160,160);
+                    }
+                }
             }
-
 
 
 
