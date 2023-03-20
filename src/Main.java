@@ -7,6 +7,9 @@ import java.util.Date;
 import java.awt.KeyEventDispatcher;
 import java.awt.KeyboardFocusManager;
 import java.awt.event.KeyEvent;
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
 public class Main {
 
     public static void main(String[] args) {
@@ -37,7 +40,7 @@ public class Main {
 
         int playerSpeed = 35;
 
-        int maxCreatures = 10000;
+        int maxCreatures = 0;
         int creatureHealth = 30;
         int treeSpeed = 20;
         int skinChoice = 1;
@@ -102,6 +105,21 @@ public class Main {
         frame.setVisible(true);
         //================================
         //===== Other Initialization =====
+        frame.addMouseListener(new MouseAdapter() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                super.mouseClicked(e);
+                for(int i  = 0; i<trees.size(); i++){
+                    if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
+                        if(player.getY() >= trees.get(i).getY()-50 && player.getY() <= trees.get(i).getY()+50){
+                            trees.get(i).setBounds(5000,5000,160,160);
+                            break;
+                        }
+                    }
+                }
+            }
+        });
+
 
         //======================
         //===== Game Start =====
@@ -129,13 +147,13 @@ public class Main {
                 if(hold.getY() >= player.getY()){hold.setBounds(hold.getX(), hold.getY()-treeSpeed,120,120); }
             }
 
-            for(int i  = 0; i<trees.size(); i++){
+            /*for(int i  = 0; i<trees.size(); i++){
                 if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
                     if(player.getY() >= trees.get(i).getY()-50 && player.getY() <= trees.get(i).getY()+50){
                         trees.get(i).setBounds(5000,5000,160,160);
                     }
                 }
-            }
+            }*/
 
 
 
