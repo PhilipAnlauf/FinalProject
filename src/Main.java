@@ -50,6 +50,8 @@ public class Main {
         int sharpenerSpawnRate = 20; //Amount of cycles before new axe sharpener spawn
 
         int gameInterval = 85; //in milliseconds
+
+        int dontWorryAboutIt = 0;
         //============================================
         //Adding Sprites
         ArrayList<JLabel> rocks = new ArrayList<>();
@@ -107,12 +109,20 @@ public class Main {
         //===== Other Initialization =====
         frame.addMouseListener(new MouseAdapter() {
             @Override
-            public void mouseClicked(MouseEvent e) {
-                super.mouseClicked(e);
+            public void mousePressed(MouseEvent e) {
+
+                super.mousePressed(e);
                 for(int i  = 0; i<trees.size(); i++){
                     if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
                         if(player.getY() >= trees.get(i).getY()-50 && player.getY() <= trees.get(i).getY()+50){
                             trees.get(i).setBounds(5000,5000,160,160);
+
+                            monsters.add(new JLabel(treeAnimation1));
+                            monsters.get(monsters.size()-1).setBounds((int)(Math.random()*1440),-200,60,60);
+                            layeredPane.add(monsters.get(monsters.size()-1), Integer.valueOf(2));
+
+
+
                             break;
                         }
                     }
@@ -133,19 +143,20 @@ public class Main {
             if(player.getY()+75 >= cursor.getY()){player.setBounds(player.getX(), player.getY()-playerSpeed,120,120); }
 
 
-            for(JLabel hold: monsters){
+            for(int i = dontWorryAboutIt; i<monsters.size();i++){
                 skinChoice = skinChoice*-1;
-                if(skinChoice == -1){
-                    hold.setIcon(treeAnimation1);
-                }
-                if(skinChoice == 1){
-                    hold.setIcon(treeAnimation2);
-                }
-                if(hold.getX() <= player.getX()){hold.setBounds(hold.getX()+treeSpeed, hold.getY(),120,120);}
-                if(hold.getX() >= player.getX()){hold.setBounds(hold.getX()-treeSpeed, hold.getY(),120,120); }
-                if(hold.getY() <= player.getY()){hold.setBounds(hold.getX(), hold.getY()+treeSpeed,120,120);}
-                if(hold.getY() >= player.getY()){hold.setBounds(hold.getX(), hold.getY()-treeSpeed,120,120); }
+            if(skinChoice == -1){
+                monsters.get(i).setIcon(treeAnimation1);
             }
+            if(skinChoice == 1){
+                monsters.get(i).setIcon(treeAnimation2);
+            }
+            if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()+treeSpeed, monsters.get(i).getY(),120,120);}
+            if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()-treeSpeed, monsters.get(i).getY(),120,120); }
+            if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()+treeSpeed,120,120);}
+            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed,120,120); }
+            }
+            dontWorryAboutIt = 0;
 
             /*for(int i  = 0; i<trees.size(); i++){
                 if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
