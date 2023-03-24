@@ -154,7 +154,16 @@ public class Main {
             if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()+treeSpeed, monsters.get(i).getY(),120,120);}
             if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()-treeSpeed, monsters.get(i).getY(),120,120); }
             if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()+treeSpeed,120,120);}
-            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed,120,120); }
+            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed,120,120);}
+
+            if(monsters.get(i).getX()+60 <= player.getX()+50 && monsters.get(i).getX()+60 >= player.getX()){
+                if(monsters.get(i).getY()+60 <= player.getY()+50 && monsters.get(i).getY()+60 >= player.getY()){
+                    playerSpeed = 0;
+                    treeSpeed = 0;
+                    player.setBounds(5000,5000, 0, 0);
+                }
+            }
+
             }
             dontWorryAboutIt = 0;
 
