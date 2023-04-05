@@ -16,6 +16,7 @@ public class Main {
         //Initializing images and misc.
         ImageIcon treeImage = new ImageIcon("tree.png");
         treeImage.setImage(treeImage.getImage().getScaledInstance(160,160,Image.SCALE_DEFAULT));
+
         ImageIcon rockImage = new ImageIcon("rock.png");
         rockImage.setImage(rockImage.getImage().getScaledInstance(60,60,Image.SCALE_DEFAULT));
 
@@ -29,6 +30,9 @@ public class Main {
 
         ImageIcon backgroundImage = new ImageIcon("background.png");
         backgroundImage.setImage(backgroundImage.getImage().getScaledInstance(1440,900,Image.SCALE_DEFAULT));
+
+        ImageIcon axeImage = new ImageIcon("axe.png");
+        axeImage.setImage(axeImage.getImage().getScaledInstance(40,40,Image.SCALE_DEFAULT));
 
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setSize(1440, 900);
@@ -52,11 +56,18 @@ public class Main {
         int gameInterval = 85; //in milliseconds
 
         int dontWorryAboutIt = 0;
+
+        int maxAxes = 25;
+
         //============================================
         //Adding Sprites
+
         ArrayList<JLabel> rocks = new ArrayList<>();
         ArrayList<JLabel> trees = new ArrayList<>();
         ArrayList<JLabel> monsters = new ArrayList<>();
+        ArrayList<JLabel> axes = new ArrayList<>();
+
+        axeCoords[] axeC = new axeCoords[maxAxes];
 
         for(int i = 0; i<rockCount; i++){
             rocks.add(new JLabel(rockImage));
@@ -107,6 +118,28 @@ public class Main {
         frame.setVisible(true);
         //================================
         //===== Other Initialization =====
+        frame.addKeyListener(new KeyListener() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyPressed(KeyEvent e) {
+
+            }
+
+            @Override
+            public void keyReleased(KeyEvent e) {
+                if(e.getKeyCode()==32 && (axes.size()<maxAxes)){
+                    axes.add(new JLabel(axeImage));
+                    layeredPane.add(axes.get(axes.size()-1), Integer.valueOf(3));
+                    axes.get(axes.size()-1).setBounds(player.getX()+25,player.getY()+25,40,40);
+                    axeC[axes.size()-1] = new axeCoords( (int)MouseInfo.getPointerInfo().getLocation().getX(), (int)MouseInfo.getPointerInfo().getLocation().getY());
+                }
+            }
+        });
+
         frame.addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -120,8 +153,6 @@ public class Main {
                             monsters.add(new JLabel(treeAnimation1));
                             monsters.get(monsters.size()-1).setBounds((int)(Math.random()*1440),-200,60,60);
                             layeredPane.add(monsters.get(monsters.size()-1), Integer.valueOf(2));
-
-
 
                             break;
                         }
@@ -166,6 +197,24 @@ public class Main {
 
             }
             dontWorryAboutIt = 0;
+
+            if(axes.size() > 0){
+                for(int i = 0; i<axes.size(); i++){
+                    if(axes.get(i).getX() < axeC[i].getX()){
+                        axes.get(i).setBounds(axes.get(i).getX()+playerSpeed, axes.get(i).getY(), 40, 40);
+                    }
+                    if(axes.get(i).getY() < axeC[i].getY()-50){
+                        axes.get(i).setBounds(axes.get(i).getX(), axes.get(i).getY()+playerSpeed, 40, 40);
+                    }
+
+                    if(axes.get(i).getX() > axeC[i].getX()){
+                        axes.get(i).setBounds(axes.get(i).getX()-playerSpeed, axes.get(i).getY(), 40, 40);
+                    }
+                    if(axes.get(i).getY() > axeC[i].getY()-50){
+                        axes.get(i).setBounds(axes.get(i).getX(), axes.get(i).getY()-playerSpeed, 40, 40);
+                    }
+                }
+            }
 
             /*for(int i  = 0; i<trees.size(); i++){
                 if(player.getX() >= trees.get(i).getX()-50 && player.getX() <= trees.get(i).getX()+50){
