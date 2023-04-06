@@ -195,11 +195,29 @@ public class Main {
                 }
             }
 
+            if(axes.size()>0){
+                for(int a = 0; a<axes.size(); a++){
+                    if(monsters.get(i).getX()+60 <= axes.get(a).getX()+40 && monsters.get(i).getX()+60 >= axes.get(a).getX()){
+                        if(monsters.get(i).getY()+60 <= axes.get(a).getY()+40 && monsters.get(i).getY()+60 >= axes.get(a).getY()){
+                            axeC[a] = new axeCoords(5000,5000);
+                            axes.get(a).setBounds(5000,5000,0,0);
+                            monsters.get(i).setIcon(rockImage);
+                            monsters.remove(i);
+                            axes.get(a).setBounds(5000,5000,0,0);
+                            break;
+                        }
+                    }
+                }
+            }
+
+
+
             }
             dontWorryAboutIt = 0;
 
             if(axes.size() > 0){
                 for(int i = 0; i<axes.size(); i++){
+                    axeCoords hold = new axeCoords(axes.get(i).getX(), axes.get(i).getY());
                     if(axes.get(i).getX() < axeC[i].getX()){
                         axes.get(i).setBounds(axes.get(i).getX()+playerSpeed, axes.get(i).getY(), 40, 40);
                     }
@@ -212,6 +230,11 @@ public class Main {
                     }
                     if(axes.get(i).getY() > axeC[i].getY()-50){
                         axes.get(i).setBounds(axes.get(i).getX(), axes.get(i).getY()-playerSpeed, 40, 40);
+                    }
+                    axeCoords hold2 = new axeCoords(axes.get(i).getX(), axes.get(i).getY());
+                    if(hold.getX() == hold2.getX() && hold2.getY() == hold2.getY()){
+                        axeC[i] = new axeCoords(5000,5000);
+                        axes.get(i).setBounds(5000,5000,0,0);
                     }
                 }
             }
