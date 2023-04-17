@@ -126,7 +126,19 @@ public class Main {
 
             @Override
             public void keyPressed(KeyEvent e) {
-
+                System.out.println(e.getKeyCode());
+                    if(e.getKeyCode() ==  65){
+                        player.setBounds(player.getX()-35, player.getY(), 50,50);
+                    }
+                    if(e.getKeyCode() ==  68){
+                    player.setBounds(player.getX()+35, player.getY(), 50,50);
+                    }
+                    if(e.getKeyCode() ==  87){
+                    player.setBounds(player.getX(), player.getY()-35, 50,50);
+                    }
+                    if(e.getKeyCode() ==  83){
+                    player.setBounds(player.getX(), player.getY()+35, 50,50);
+                    }
             }
 
             @Override
@@ -168,10 +180,10 @@ public class Main {
 
             Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-            if(player.getX()+50 <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
-            if(player.getX()+50 >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
-            if(player.getY()+75 <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
-            if(player.getY()+75 >= cursor.getY()){player.setBounds(player.getX(), player.getY()-playerSpeed,120,120); }
+            //if(player.getX()+50 <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
+            //if(player.getX()+50 >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
+            //if(player.getY()+75 <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
+            //if(player.getY()+75 >= cursor.getY()){player.setBounds(player.getX(), player.getY()-playerSpeed,120,120); }
 
 
             for(int i = dontWorryAboutIt; i<monsters.size();i++){
