@@ -119,26 +119,43 @@ public class Main {
         //================================
         //===== Other Initialization =====
         frame.addKeyListener(new KeyListener() {
+            public boolean left = false;
+            public boolean right = false;
+            public boolean down = false;
+            public boolean up = false;
             @Override
             public void keyTyped(KeyEvent e) {
 
             }
-
             @Override
             public void keyPressed(KeyEvent e) {
                 System.out.println(e.getKeyCode());
                     if(e.getKeyCode() ==  65){
-                        player.setBounds(player.getX()-35, player.getY(), 50,50);
+                        left = true;
                     }
                     if(e.getKeyCode() ==  68){
-                    player.setBounds(player.getX()+35, player.getY(), 50,50);
+                        right = true;
                     }
                     if(e.getKeyCode() ==  87){
-                    player.setBounds(player.getX(), player.getY()-35, 50,50);
+                        up = true;
                     }
                     if(e.getKeyCode() ==  83){
-                    player.setBounds(player.getX(), player.getY()+35, 50,50);
+                      down = true;
                     }
+
+                    if(left == true){
+                        player.setBounds(player.getX()-35, player.getY(), 50,50);
+                    }
+                    if(right == true){
+                        player.setBounds(player.getX()+35, player.getY(), 50,50);
+                    }
+                    if(up == true){
+                        player.setBounds(player.getX(), player.getY()-35, 50,50);
+                    }
+                    if(down == true){
+                        player.setBounds(player.getX(), player.getY()+35, 50,50);
+                    }
+
             }
 
             @Override
@@ -148,6 +165,18 @@ public class Main {
                     layeredPane.add(axes.get(axes.size()-1), Integer.valueOf(3));
                     axes.get(axes.size()-1).setBounds(player.getX()+25,player.getY()+25,40,40);
                     axeC[axes.size()-1] = new axeCoords( (int)MouseInfo.getPointerInfo().getLocation().getX(), (int)MouseInfo.getPointerInfo().getLocation().getY());
+                }
+                if(e.getKeyCode() ==  65){
+                    left = false;
+                }
+                if(e.getKeyCode() ==  68){
+                    right = false;
+                }
+                if(e.getKeyCode() ==  87){
+                    up = false;
+                }
+                if(e.getKeyCode() ==  83){
+                    down = false;
                 }
             }
         });
@@ -258,8 +287,6 @@ public class Main {
                     }
                 }
             }*/
-
-
 
             try
             {
