@@ -53,11 +53,13 @@ public class Main {
         int axeDamage = 10; //Damage per axe hit
         int sharpenerSpawnRate = 20; //Amount of cycles before new axe sharpener spawn
 
-        int gameInterval = 85; //in milliseconds
+        int gameInterval = 75; //in milliseconds
 
         int dontWorryAboutIt = 0;
 
         int maxAxes = 25;
+
+        Variables playerDirection = new Variables();
 
         //============================================
         //Adding Sprites
@@ -119,10 +121,6 @@ public class Main {
         //================================
         //===== Other Initialization =====
         frame.addKeyListener(new KeyListener() {
-            public boolean left = false;
-            public boolean right = false;
-            public boolean down = false;
-            public boolean up = false;
             @Override
             public void keyTyped(KeyEvent e) {
 
@@ -131,31 +129,17 @@ public class Main {
             public void keyPressed(KeyEvent e) {
                 System.out.println(e.getKeyCode());
                     if(e.getKeyCode() ==  65){
-                        left = true;
+                        playerDirection.setLeft(true);
                     }
                     if(e.getKeyCode() ==  68){
-                        right = true;
+                        playerDirection.setRight(true);
                     }
                     if(e.getKeyCode() ==  87){
-                        up = true;
+                        playerDirection.setUp(true);
                     }
                     if(e.getKeyCode() ==  83){
-                      down = true;
+                        playerDirection.setDown(true);
                     }
-
-                    if(left == true){
-                        player.setBounds(player.getX()-35, player.getY(), 50,50);
-                    }
-                    if(right == true){
-                        player.setBounds(player.getX()+35, player.getY(), 50,50);
-                    }
-                    if(up == true){
-                        player.setBounds(player.getX(), player.getY()-35, 50,50);
-                    }
-                    if(down == true){
-                        player.setBounds(player.getX(), player.getY()+35, 50,50);
-                    }
-
             }
 
             @Override
@@ -167,16 +151,16 @@ public class Main {
                     axeC[axes.size()-1] = new axeCoords( (int)MouseInfo.getPointerInfo().getLocation().getX(), (int)MouseInfo.getPointerInfo().getLocation().getY());
                 }
                 if(e.getKeyCode() ==  65){
-                    left = false;
+                    playerDirection.setLeft(false);
                 }
                 if(e.getKeyCode() ==  68){
-                    right = false;
+                    playerDirection.setRight(false);
                 }
                 if(e.getKeyCode() ==  87){
-                    up = false;
+                    playerDirection.setUp(false);
                 }
                 if(e.getKeyCode() ==  83){
-                    down = false;
+                    playerDirection.setDown(false);
                 }
             }
         });
@@ -202,10 +186,26 @@ public class Main {
             }
         });
 
-
+c vdfr
         //======================
         //===== Game Start =====
         while(true){
+
+           if(axePause >=+)
+
+            if(playerDirection.getLeft() == true){
+                player.setBounds(player.getX()-25, player.getY(), 50,50);
+            }
+            if(playerDirection.getRight() == true){
+                player.setBounds(player.getX()+25, player.getY(), 50,50);
+            }
+            if(playerDirection.getUp() == true){
+                player.setBounds(player.getX(), player.getY()-25, 50,50);
+            }
+            if(playerDirection.getDown() == true){
+                player.setBounds(player.getX(), player.getY()+25, 50,50);
+            }
+
 
             Point cursor = MouseInfo.getPointerInfo().getLocation();
 
