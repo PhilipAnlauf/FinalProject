@@ -35,7 +35,7 @@ public class Main {
         axeImage.setImage(axeImage.getImage().getScaledInstance(40,40,Image.SCALE_DEFAULT));
 
         JLayeredPane layeredPane = new JLayeredPane();
-        layeredPane.setSize(1440, 900);
+        layeredPane.setSize(1440,900);
 
         //============================================
         //=========== General Game Values ============
@@ -57,7 +57,7 @@ public class Main {
 
         int dontWorryAboutIt = 0;
 
-        int maxAxes = 25;
+        int maxAxes = 5000;
 
         Variables playerDirection = new Variables();
 
@@ -186,12 +186,12 @@ public class Main {
             }
         });
 
-c vdfr
+
         //======================
         //===== Game Start =====
         while(true){
 
-           if(axePause >=+)
+
 
             if(playerDirection.getLeft() == true){
                 player.setBounds(player.getX()-25, player.getY(), 50,50);
@@ -209,6 +209,7 @@ c vdfr
 
             Point cursor = MouseInfo.getPointerInfo().getLocation();
 
+            System.out.println(cursor.getX());
             //if(player.getX()+50 <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
             //if(player.getX()+50 >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
             //if(player.getY()+75 <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
