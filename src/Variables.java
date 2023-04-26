@@ -4,11 +4,26 @@ public class Variables {
     private boolean left;
     private boolean right;
 
+    private int speed;
+
     public Variables(){
         up = false;
         down = false;
         left = false;
         right = false;
+    }
+
+
+    public void increaseSpeed(){
+        speed += 5;
+    }
+
+    public int getTreeSpeed(){
+        return speed;
+    }
+
+    public void setSpeed(int in){
+        speed = in;
     }
 
     public void setUp(boolean in){

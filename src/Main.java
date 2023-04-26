@@ -46,7 +46,9 @@ public class Main {
 
         int maxCreatures = 0;
         int creatureHealth = 30;
-        int treeSpeed = 20;
+
+        Variables treeSpeed = new Variables();
+
         int skinChoice = 1;
 
         int axeHealth = 4; //# of hits before breaking
@@ -179,6 +181,8 @@ public class Main {
                             monsters.get(monsters.size()-1).setBounds((int)(Math.random()*1440),-200,60,60);
                             layeredPane.add(monsters.get(monsters.size()-1), Integer.valueOf(2));
 
+                            treeSpeed.increaseSpeed();
+
                             break;
                         }
                     }
@@ -224,15 +228,15 @@ public class Main {
             if(skinChoice == 1){
                 monsters.get(i).setIcon(treeAnimation2);
             }
-            if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()+treeSpeed, monsters.get(i).getY(),120,120);}
-            if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()-treeSpeed, monsters.get(i).getY(),120,120); }
-            if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()+treeSpeed,120,120);}
-            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed,120,120);}
+            if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()+treeSpeed.getTreeSpeed(), monsters.get(i).getY(),120,120);}
+            if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()-treeSpeed.getTreeSpeed(), monsters.get(i).getY(),120,120); }
+            if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()+treeSpeed.getTreeSpeed(),120,120);}
+            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed.getTreeSpeed(),120,120);}
 
             if(monsters.get(i).getX()+60 <= player.getX()+50 && monsters.get(i).getX()+60 >= player.getX()){
                 if(monsters.get(i).getY()+60 <= player.getY()+50 && monsters.get(i).getY()+60 >= player.getY()){
                     playerSpeed = 0;
-                    treeSpeed = 0;
+                    treeSpeed.setSpeed(0);
                     player.setBounds(5000,5000, 0, 0);
                 }
             }
