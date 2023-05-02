@@ -59,7 +59,7 @@ public class Main {
 
         int dontWorryAboutIt = 0;
 
-        int maxAxes = 5000;
+        int maxAxes = 99999;
 
         Variables playerDirection = new Variables();
 
@@ -181,8 +181,6 @@ public class Main {
                             monsters.get(monsters.size()-1).setBounds((int)(Math.random()*1440),-200,60,60);
                             layeredPane.add(monsters.get(monsters.size()-1), Integer.valueOf(2));
 
-                            treeSpeed.increaseSpeed();
-
                             break;
                         }
                     }
@@ -245,6 +243,7 @@ public class Main {
                 for(int a = 0; a<axes.size(); a++){
                     if(monsters.get(i).getX()+60 <= axes.get(a).getX()+40 && monsters.get(i).getX()+60 >= axes.get(a).getX()){
                         if(monsters.get(i).getY()+60 <= axes.get(a).getY()+40 && monsters.get(i).getY()+60 >= axes.get(a).getY()){
+                            treeSpeed.increaseSpeed();
                             axeC[a] = new axeCoords(5000,5000);
                             axes.get(a).setBounds(5000,5000,0,0);
                             monsters.get(i).setIcon(rockImage);

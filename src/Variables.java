@@ -11,11 +11,12 @@ public class Variables {
         down = false;
         left = false;
         right = false;
+        speed = 5;
     }
 
 
     public void increaseSpeed(){
-        speed += 5;
+        speed += 2;
     }
 
     public int getTreeSpeed(){
