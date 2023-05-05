@@ -129,7 +129,7 @@ public class Main {
             }
             @Override
             public void keyPressed(KeyEvent e) {
-                System.out.println(e.getKeyCode());
+                //System.out.println(e.getKeyCode());
                     if(e.getKeyCode() ==  65){
                         playerDirection.setLeft(true);
                     }
@@ -211,7 +211,7 @@ public class Main {
 
             Point cursor = MouseInfo.getPointerInfo().getLocation();
 
-            System.out.println(cursor.getX());
+
             //if(player.getX()+50 <= cursor.getX()){player.setBounds(player.getX()+playerSpeed, player.getY(),120,120);}
             //if(player.getX()+50 >= cursor.getX()){player.setBounds(player.getX()-playerSpeed, player.getY(),120,120); }
             //if(player.getY()+75 <= cursor.getY()){player.setBounds(player.getX(), player.getY()+playerSpeed,120,120);}
@@ -226,10 +226,10 @@ public class Main {
             if(skinChoice == 1){
                 monsters.get(i).setIcon(treeAnimation2);
             }
-            if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()+treeSpeed.getTreeSpeed(), monsters.get(i).getY(),120,120);}
-            if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds(monsters.get(i).getX()-treeSpeed.getTreeSpeed(), monsters.get(i).getY(),120,120); }
-            if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()+treeSpeed.getTreeSpeed(),120,120);}
-            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), monsters.get(i).getY()-treeSpeed.getTreeSpeed(),120,120);}
+            if(monsters.get(i).getX() <= player.getX()){monsters.get(i).setBounds((int)(monsters.get(i).getX()+treeSpeed.getTreeSpeed()), monsters.get(i).getY(),120,120);}
+            if(monsters.get(i).getX() >= player.getX()){monsters.get(i).setBounds((int)(monsters.get(i).getX()-treeSpeed.getTreeSpeed()), monsters.get(i).getY(),120,120); }
+            if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), (int)(monsters.get(i).getY()+treeSpeed.getTreeSpeed()),120,120);}
+            if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), (int)(monsters.get(i).getY()-treeSpeed.getTreeSpeed()),120,120);}
 
             if(monsters.get(i).getX()+60 <= player.getX()+50 && monsters.get(i).getX()+60 >= player.getX()){
                 if(monsters.get(i).getY()+60 <= player.getY()+50 && monsters.get(i).getY()+60 >= player.getY()){
@@ -243,6 +243,7 @@ public class Main {
                 for(int a = 0; a<axes.size(); a++){
                     if(monsters.get(i).getX()+60 <= axes.get(a).getX()+40 && monsters.get(i).getX()+60 >= axes.get(a).getX()){
                         if(monsters.get(i).getY()+60 <= axes.get(a).getY()+40 && monsters.get(i).getY()+60 >= axes.get(a).getY()){
+                            //System.out.println(treeSpeed.getTreeSpeed());
                             treeSpeed.increaseSpeed();
                             axeC[a] = new axeCoords(5000,5000);
                             axes.get(a).setBounds(5000,5000,0,0);

@@ -3,8 +3,7 @@ public class Variables {
     private boolean down;
     private boolean left;
     private boolean right;
-
-    private int speed;
+    private double speed;
 
     public Variables(){
         up = false;
@@ -16,10 +15,10 @@ public class Variables {
 
 
     public void increaseSpeed(){
-        speed += 2;
+        speed += 2*(1-(speed/35.0));
     }
 
-    public int getTreeSpeed(){
+    public double getTreeSpeed(){
         return speed;
     }
 
