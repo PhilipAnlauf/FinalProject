@@ -37,6 +37,7 @@ public class Main {
         JLayeredPane layeredPane = new JLayeredPane();
         layeredPane.setSize(1440,900);
 
+
         //============================================
         //=========== General Game Values ============
         int rockCount = 30;
@@ -231,8 +232,8 @@ public class Main {
             if(monsters.get(i).getY() <= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), (int)(monsters.get(i).getY()+treeSpeed.getTreeSpeed()),120,120);}
             if(monsters.get(i).getY() >= player.getY()){monsters.get(i).setBounds(monsters.get(i).getX(), (int)(monsters.get(i).getY()-treeSpeed.getTreeSpeed()),120,120);}
 
-            if(monsters.get(i).getX()+60 <= player.getX()+50 && monsters.get(i).getX()+60 >= player.getX()){
-                if(monsters.get(i).getY()+60 <= player.getY()+50 && monsters.get(i).getY()+60 >= player.getY()){
+            if(monsters.get(i).getX()<= player.getX()+25 && monsters.get(i).getX()+120 >= player.getX()+25){
+                if(monsters.get(i).getY() <= player.getY()+25 && monsters.get(i).getY()+120 >= player.getY()+25){
                     playerSpeed = 0;
                     treeSpeed.setSpeed(0);
                     player.setBounds(5000,5000, 0, 0);
@@ -241,8 +242,8 @@ public class Main {
 
             if(axes.size()>0){
                 for(int a = 0; a<axes.size(); a++){
-                    if(monsters.get(i).getX()+60 <= axes.get(a).getX()+40 && monsters.get(i).getX()+60 >= axes.get(a).getX()){
-                        if(monsters.get(i).getY()+60 <= axes.get(a).getY()+40 && monsters.get(i).getY()+60 >= axes.get(a).getY()){
+                    if(monsters.get(i).getX() <= axes.get(a).getX()+20 && monsters.get(i).getX()+60 >= axes.get(a).getX()+20){
+                        if(monsters.get(i).getY() <= axes.get(a).getY()+20 && monsters.get(i).getY()+60 >= axes.get(a).getY()+20){
                             //System.out.println(treeSpeed.getTreeSpeed());
                             treeSpeed.increaseSpeed();
                             axeC[a] = new axeCoords(5000,5000);
